@@ -5,11 +5,9 @@ import java.util.LinkedList;
 public class Cola<T> {
 
     private LinkedList<T> cola;
-    private int primero;
 
     public Cola() {
         this.cola = new LinkedList<T>();
-        this.primero = 0;
     }
 
     public T extraerSiguiente() {
