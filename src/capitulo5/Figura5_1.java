@@ -1,5 +1,7 @@
 package capitulo5;
 
+import javax.swing.*;
+
 public class Figura5_1 {
 
     public static final int EMPLEADO_LIBRE = 0;
@@ -46,7 +48,13 @@ public class Figura5_1 {
      *                             *
      *******************************/
     public static void main(String args[]) {
-        Figura5_1 fig = new Figura5_1(1, 0.5f, 5, EMPLEADO_LIBRE);
+
+        /* Entrada de datos */
+        float m1 = Float.parseFloat(JOptionPane.showInputDialog("Media del intervalo entre llegadas: "));
+        float m2 = Float.parseFloat(JOptionPane.showInputDialog("Media del tiempo de servicio: "));
+        int c = Integer.parseInt(JOptionPane.showInputDialog("Num. clientes cuyo tiempo de espera debe simularse: "));
+
+        Figura5_1 fig = new Figura5_1(m1, m2, c, EMPLEADO_LIBRE);
         fig.informeEstadoSimulacion();
 
         do {
