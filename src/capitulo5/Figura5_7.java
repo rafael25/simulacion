@@ -6,6 +6,7 @@ public class Figura5_7 {
 
     private float precioUnitario;
     private float tramitePedido;
+    private float tramitePedidoUrgente;
     private int Inventario;
     private float Imas;
     private float Imenos;
@@ -27,10 +28,11 @@ public class Figura5_7 {
      *   Rutina de inicialización  *
      *                             *
      *******************************/
-    public Figura5_7(int Inventario, float precioUnitario, float tramitePedido, int finSimulacion, int S, int s) {
+    public Figura5_7(int Inventario, float precioUnitario, float tramitePedido, float tramitePedidoUrgente, int finSimulacion, int S, int s) {
         this.Inventario = Inventario;
         this.precioUnitario = precioUnitario;
         this.tramitePedido = tramitePedido;
+        this.tramitePedidoUrgente = tramitePedidoUrgente;
         this.finSimulacion = finSimulacion;
         this.S = S;
         this.s = s;
@@ -50,11 +52,12 @@ public class Figura5_7 {
         int inventarioInicial = 60;
         float precioUnitario = 300;
         float precioTramite = 3200;
+        float precioTramiteUrgente = 7000;
         int finSimulacion = 120;
         int S = 40;
         int s = 20;
 
-        Figura5_7 fig = new Figura5_7(inventarioInicial, precioUnitario, precioTramite, finSimulacion, S, s);
+        Figura5_7 fig = new Figura5_7(inventarioInicial, precioUnitario, precioTramite, precioTramiteUrgente, finSimulacion, S, s);
 
         do {
             fig.siguienteEvento();
@@ -97,8 +100,14 @@ public class Figura5_7 {
     public void eventoEvaluarInventario() {
         if (Inventario < s) {
             Z = S - Inventario;
-            costoPedidos += tramitePedido + (precioUnitario * Z);
-            llegadaProducto = generador.generarTiempoServicioProveedor(reloj);
+
+            if (Inventario < 0) {
+                costoPedidos += tramitePedidoUrgente + (precioUnitario * Z);
+                llegadaProducto = generador.generarTiempoServicioProveedorUrgente(reloj);
+            } else {
+                costoPedidos += tramitePedido + (precioUnitario * Z);
+                llegadaProducto = generador.generarTiempoServicioProveedor(reloj);
+            }
         }
 
         evaluarInventario += 1;

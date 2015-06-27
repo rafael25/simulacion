@@ -37,6 +37,12 @@ public class GeneradorInventario {
         return inicio + llegada;
     }
 
+    public float generarTiempoServicioProveedorUrgente(float inicio) {
+        float x = aleatorioUniforme();
+        float llegada = 1/4f + ((1/2f - 1/4f) * x);
+        return inicio + llegada;
+    }
+
     public float aleatorioExponecial(float m) {
         Random rand = new Random();
         float x;
