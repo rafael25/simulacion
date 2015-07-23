@@ -1,4 +1,4 @@
-## Practicas de Elena
+## Practicas de Simulación
 
-+ Figura 5.1
-+ Figura 5.2
++ Cola
++ Almacen
